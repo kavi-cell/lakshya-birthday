@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #c2185b;
+      margin-bottom: 1rem;
+    }
+    .message {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+    .countdown {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #880e4f;
+      margin-bottom: 1rem;
+    }
+    .daily-message {
+      font-size: 1.1rem;
+      background: #fff5f8;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      max-width: 700px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Happy Birthday, My Love</h1>
+  <div class="message">
+    <p>Some say the people you love is a lighthouse that never goes out at sea.</p>
+    <p>It's a promise in confusion, a constant.</p>
+    <p>It's the light and the hope in the darkness.</p>
+    <p>It points you, day after day, towards true love.</p>
+    <p>So I walked many ways… But they all led back to you.</p>
+    <p>I still believe in that legend of the lighthouse —</p>
+    <p>That those who part beneath it will one day meet again.</p>
+  </div>
+
+  <div class="countdown" id="countdown"></div>
+  <div class="daily-message" id="daily-message"></div>
+
+  <script>
+    const birthday = new Date("2025-09-23");
+    const today = new Date();
+    const countdownEl = document.getElementById("countdown");
+    const messageEl = document.getElementById("daily-message");
+
+    const messages = {
+      "09-01": "Day 1: A new month begins, and so does the countdown to you. 💖",
+      "09-02": "Day 2: You are my sunrise and my calm. ☀️",
+      "09-03": "Day 3: Just thinking of you makes my whole day glow. ✨",
+      // Add more messages here...
+      "09-23": "🎉 It's your birthday, Baby! Happy Birthday Lakshya! 🎂"
+    };
+
+    // Format today's date as MM-DD
+    const todayStr = today.toISOString().slice(5, 10);
+
+    // Show countdown
+    const distance = birthday - today;
+    const days = Math.ceil(distance / (1000 * 60 * 60 * 24));
+
+    if (distance <= 0) {
+      countdownEl.innerText = "🎉 It's Lakshya's Birthday Today! 🎉";
+    } else {
+      countdownEl.innerText = `⏳ ${days} day(s) until Baby's Birthday!`;
+    }
+
+    // Show daily message if in September
+    if (messages[todayStr]) {
+      messageEl.innerText = messages[todayStr];
+    } else if (today.getMonth() === 8) { // September is month 8 (0-indexed)
+      messageEl.innerText = "💌 A new love note will appear here each day...";
+    }
+  </script>
+</body>
+</html>
